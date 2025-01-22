@@ -6,7 +6,6 @@ html{
 body{
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #ffffff;
     margin: 0;
     padding: 0;
     min-width: 380px;
@@ -30,26 +29,37 @@ button:hover{
 }
 
 
-input { /* esto afecta a todos los imputs y al id randomWord */
+.button_form { /* esto afecta a los dos botones para añadir perritos*/
     font-family: Arial, sans-serif; 
     font-size: 1.5rem;
     letter-spacing: 1x;
     background: none;
     color: #333;
-    cursor: url(images/lapiz_resized.png) 0 31, auto;
-    margin-bottom: 1rem;
     border-radius: 3px;
+    margin-inline: 0.2rem;
+    margin-block: 1rem;
+
 
 }
 
-input[type='submit']:hover, #randomWord:hover{ /* esta forma de selección es para que no se aplique a inputs que no tengan el tipo 'submit' */
+.button_form:hover, #randomWord:hover{ /* esta forma de selección es para que no se aplique a inputs que no tengan el tipo 'submit' */
     background-color: #3caaff7f;
     text-align: center;
 }
 
-.voteCard{
-    border-color: #333;
-    display: inline-block;
+.cardVote {
+    display: flex; /* Organiza las tarjetas en una fila */
+    gap: 20px; /* Espaciado horizontal entre las tarjetas */
+    justify-content: center; /* Centra las tarjetas dentro del contenedor */
+    align-items: flex-start; /* Alinea verticalmente las tarjetas al inicio */
+    margin-top: 10px; /* Espaciado superior */
+}
+
+.voteCard {
+    display: flex; /* Organiza el emoji y el botón */
+    flex-direction: column; /* Coloca el emoji arriba del botón */
+    align-items: center; /* Centra el contenido horizontalmente */
+    gap: 5px; /* Espaciado entre el emoji y el botón */
 }
 
 .dogCard {
@@ -59,12 +69,13 @@ input[type='submit']:hover, #randomWord:hover{ /* esta forma de selección es pa
     padding: 10px; /* Espacio interno entre el contenido y el borde */
     margin: 10px; /* Espacio externo entre el div y otros elementos */
     max-width: 25%;
+    box-sizing: border-box;
 }
 
 .dogCard img {
-    width: 100%; /* Ajusta el ancho al 100% del div */
-    height: auto; /* Mantiene la proporción de la imagen */
-    display: block; /* Elimina espacio extra causado por imágenes como elementos en línea */
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover; /* Ajusta la imagen para que se adapte sin deformarse */
 }
 
 
