@@ -67,8 +67,16 @@ button:hover{
     border: 2px solid black; /* Grosor, estilo y color del borde */
     border-radius: 8px; /* Opcional: para bordes redondeados */
     padding: 10px; /* Espacio interno entre el contenido y el borde */
-    margin: 10px; /* Espacio externo entre el div y otros elementos */
-    max-width: 25%;
+    margin: 8px; /* Espacio externo entre el div y otros elementos */
+
+    /*con esta opción al hacerlo responsive las imágenes se salían de las cards*/
+/*     max-width: 25%; se intentaba hacer la card (.dogCard) más pequeña en función del ancho de la pantalla. El problema con el max-width: 25% es que el tamaño de la card se basaba en el 25% del contenedor padre. Sin embargo, si el contenedor principal (como el cuerpo de la página o un contenedor de varias tarjetas) tenía un tamaño demasiado grande, las tarjetas podían reducirse demasiado cuando la pantalla se hacía pequeña.
+Y lo que ocurría con las imágenes dentro de esas tarjetas es que no tenían una restricción máxima clara, lo que provocaba que se desbordaran y salieran de la card, ya que las imágenes intentaban ocupar el 100% de la card, pero la card se hacía más pequeña que la imagen.
+    max-height: 25%;  con esta opción al hacerlo responsive las imágenes se salían de las cards*/
+    
+    max-width: 200px; /* tamaño maximo del bloque: al añadirle un max-width fijo esto se soluciona
+    también funciona con min-width*/
+    /* max-height: 400px;, no hace falta ponerle un max-height ya que se adapta al contenido del div dogCard */
     box-sizing: border-box;
 }
 
@@ -78,6 +86,11 @@ button:hover{
     object-fit: cover; /* Ajusta la imagen para que se adapte sin deformarse */
 }
 
+.dog-list{ /* Centra horizontalmente todas las tarjetas para que no queden alineadas a la izquierda */
+margin: 0 auto; /* Centra horizontalmente */
+  width: 100%; /* Define un ancho para que funcione */
+  text-align: center; /*centra el texto dentro del elemento, necesitamos esta opción para que funcione, si queremos que los textos se alineen a la izquierda podemos reescribirlo más adelante */
+}
 
 
 
