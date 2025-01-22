@@ -1,0 +1,72 @@
+
+html{
+    cursor: url(images/12638.png) 0 31, auto; /* la imagen debe tener unos 32x32px para que funcione */
+}
+
+body{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    min-width: 380px;
+}
+
+/* Título */
+
+h1{
+    font-family: Arial, sans-serif;
+    font-size: 2.5rem;
+    margin: 20px;
+    color: #333;
+}
+
+.form{
+    margin:20px
+}
+
+button:hover{
+    transform: scale(1.1);
+}
+
+
+input { /* esto afecta a todos los imputs y al id randomWord */
+    font-family: Arial, sans-serif; 
+    font-size: 1.5rem;
+    letter-spacing: 1x;
+    background: none;
+    color: #333;
+    cursor: url(images/lapiz_resized.png) 0 31, auto;
+    margin-bottom: 1rem;
+    border-radius: 3px;
+
+}
+
+input[type='submit']:hover, #randomWord:hover{ /* esta forma de selección es para que no se aplique a inputs que no tengan el tipo 'submit' */
+    background-color: #3caaff7f;
+    text-align: center;
+}
+
+.voteCard{
+    border-color: #333;
+    display: inline-block;
+}
+
+.dogCard {
+    display: inline-block;
+    border: 2px solid black; /* Grosor, estilo y color del borde */
+    border-radius: 8px; /* Opcional: para bordes redondeados */
+    padding: 10px; /* Espacio interno entre el contenido y el borde */
+    margin: 10px; /* Espacio externo entre el div y otros elementos */
+    max-width: 25%;
+}
+
+.dogCard img {
+    width: 100%; /* Ajusta el ancho al 100% del div */
+    height: auto; /* Mantiene la proporción de la imagen */
+    display: block; /* Elimina espacio extra causado por imágenes como elementos en línea */
+}
+
+
+
+
