@@ -1,6 +1,6 @@
 
 html{
-    cursor: url(images/12638.png) 0 31, auto; /* la imagen debe tener unos 32x32px para que funcione */
+    cursor: url(images/12638.png) 0 0, auto; /* la imagen debe tener unos 32x32px para que funcione */
 }
 
 body{
@@ -9,6 +9,11 @@ body{
     margin: 0;
     padding: 0;
     min-width: 380px;
+    background-color: bisque;
+}
+
+button{
+    cursor: url(images/12638.png) 0 0, auto;
 }
 
 /* Título */
@@ -24,7 +29,13 @@ h1{
     margin:20px
 }
 
-button:hover{
+.dogCard button{
+    color: #333;
+    background-color: aliceblue;
+    border-radius: 3px;
+}
+
+.dogCard button:hover{
     transform: scale(1.1);
 }
 
@@ -38,6 +49,7 @@ button:hover{
     border-radius: 3px;
     margin-inline: 0.2rem;
     margin-block: 1rem;
+    background-color: rgb(255, 255, 255);
 
 
 }
@@ -78,6 +90,7 @@ Y lo que ocurría con las imágenes dentro de esas tarjetas es que no tenían un
     también funciona con min-width*/
     /* max-height: 400px;, no hace falta ponerle un max-height ya que se adapta al contenido del div dogCard */
     box-sizing: border-box;
+    background-color: rgb(255, 255, 255);
 }
 
 .dogCard img {
@@ -91,6 +104,7 @@ margin: 0 auto; /* Centra horizontalmente */
   width: 100%; /* Define un ancho para que funcione */
   text-align: center; /*centra el texto dentro del elemento, necesitamos esta opción para que funcione, si queremos que los textos se alineen a la izquierda podemos reescribirlo más adelante */
 }
+
 
 
 

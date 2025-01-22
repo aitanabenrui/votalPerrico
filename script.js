@@ -14,11 +14,11 @@ function renderPerricoArray(){
             <img class="image" id="perro" alt="imagen de perro" src="${dogImage}">
             <div class="cardVote" > 
                 <div class="voteCard">
-                    <p>😍</p>
+                    <p>😍 0</p>
                     <button>Precioso</button> 
                 </div>
                 <div class="voteCard">
-                    <p>🤢</p>
+                    <p>🤢 0</p>
                     <button>Feísimo</button>
                 </div>
             </div>
