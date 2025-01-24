@@ -5,6 +5,7 @@ console.log(perricosArray);
 
 const dogList = document.querySelector('#dog-list'); //modifica por id el div con id dog-list
 
+
 function renderPerricoArray(){
 
     dogList.innerHTML = ''; // Limpiar el contenido de la lista de perros

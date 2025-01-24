@@ -96,6 +96,7 @@ Y lo que ocurría con las imágenes dentro de esas tarjetas es que no tenían un
 .dogCard img {
     width: 10rem;
     height: 10rem;
+    border-radius: 4px;
     object-fit: cover; /* Ajusta la imagen para que se adapte sin deformarse */
 }
 
