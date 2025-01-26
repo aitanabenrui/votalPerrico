@@ -1,5 +1,5 @@
 async function getRandomDogImage() {
-    const url = 'https://dog.ceo/api/breeds/image/random';
+    const url = 'https://dog.ceo/api/breeds/image/random'; // Obtiene una imagen aleatoria de perro desde https://dog.ceo/api/breeds/image/random.
     try {
         const response = await fetch(url);
         if (!response.ok) {
