@@ -34,6 +34,22 @@ document.querySelectorAll('.dislike').forEach((buttonNode) => { //buttonNode es 
 });
 }
 
+/* Al hacer clic en el botón "Precioso":
+
+buttonNode se refiere al botón <button class="like">Precioso</button>.
+buttonNode.previousElementSibling se refiere al párrafo <p>😍 <span class="like-count"></span></p>, que contiene el contador.
+Este acceso permite que luego se obtenga el elemento <span> dentro de ese párrafo y se incremente su contenido:
+
+const likeCountNode = hermanico.querySelector('.like-count');
+likeCountNode.innerText = Number(likeCountNode.innerText) + 1; */
+
+/* previousElementSibling es una forma de navegar en el DOM para encontrar el hermano HTML anterior del elemento actual.
+En este caso, se usa para identificar el contenedor de los contadores relacionados con el botón que fue clicado, permitiendo modificar sus valores.
+ */
+
+
+//esta función se encarga de añadir las cards de perritos
+
 function renderPerrico(dogImage){ //recibe la URL de la imagen de perro
     //crea la tarjeta del perro con la imagen, botones y contadores de votos
     const htmlAdd =
