@@ -1,30 +1,31 @@
 const perricosArray = []; //Un array que almacenará las URL de las imágens de perros para renderizarlas en la página
 
-//const votesArray = [];
-
 
 console.log(perricosArray);
 
 // addPerrico();
 
-//esta linea de abajo no haría falta porque ya se ha defginido en la función renderPerrico. 
+//esta linea de abajo no haría falta porque ya se ha definido en la función renderPerrico. 
 const dogList = document.querySelector('#dog-list'); //modifica por id el div con id dog-list
 //doglist es una variable que selecciona el elemento HTML con el ID dog-list. Este es el contenedor donde se insertaran las tarjetas de los perros
+//lo que hace es seleccionar el primer elemento en el DOM que tiene el id='dogList'. el cual corresponde al contenedor en el que se va a agregar las tarjetas de los perros
+//es un punto de referencia donde colocar cada nueva tarjeta de perro dogCard.
 
-//función que agrega eventos a los botones Precioso y feísimo
+//función que agrega eventos a los botones Precioso y feísimo: agrega eventListeners a los botones precioso y feísimo para cada dogCard
 function addSocialListeners(){
 
  // Función para los votos positivos: para cada botón de precioso, se añade un eventListener, busca al hermano anterior y le suma 1 
+//Selecciona todos los botones con la clase .like (botón precioso), por cada botón se agrega un evento que incrementa el número de votos
 document.querySelectorAll('.like').forEach((buttonNode) => { //seleccióna todos los botones con la clase like
     buttonNode.addEventListener('click', function () { //al hacer click busca el elemento anterior (el contador de likes) e incrementa el número mostrado en el span .like-count
         console.log('me gusta clickado');
-        const hermanico = buttonNode.previousElementSibling;
+        const hermanico = buttonNode.previousElementSibling; //accede al hermano anterior del botón, que en el html es el elemento <p> que contien el contador de likes. Encuentra el span con la clase .like-count dentro de ese <p> y le suma 1 al número mostrado en ese <span>
         const likeCountNode = hermanico.querySelector('.like-count'); //selecciona el elemento del html span con la class 'like-count'
         likeCountNode.innerText = Number(likeCountNode.innerText) + 1  //y al elemento con class -like-count, le suma 1.
     });
 });
 
-//Función para los votos negarivos
+//Función para los votos negarivos: para cada botón de feísimo se añade un eventListener, busca al hermano anterior y le suma 1
 document.querySelectorAll('.dislike').forEach((buttonNode) => { //buttonNode es el botón en el que se hace clic (.like o .dislike).
     buttonNode.addEventListener('click', function () {         //previousElementSibling accede al contenedor inmediatamente anterior (el que contiene los contadores like-count o dislike-count).
         console.log('me gusta clickado');
@@ -143,10 +144,10 @@ const tiedVotes = () =>{
     });
 }
 
-// Función para mostrar todos los perritos nuevamente
+// Función para mostrar todos los perritos nuevamente: restablecer la visualización de todas las tarjetas de perritos en la página
 const resetView = () => {
-    const dogCards = document.querySelectorAll('.dogCard');
-    dogCards.forEach((card) => {
+    const dogCards = document.querySelectorAll('.dogCard'); //selecciona todas las cartas de perros 
+    dogCards.forEach((card) => { //para cada una de ellas vuelve a dejar el estilo original
         card.style.display = ''; // Mostrar todas las tarjetas, Restablece el estilo de la tarjeta
     });
 };
