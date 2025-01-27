@@ -50,8 +50,7 @@ h1{
     margin-inline: 0.2rem;
     margin-block: 1rem;
     background-color: rgb(255, 255, 255);
-
-
+    align-items: center;
 }
 
 .button_form:hover, #randomWord:hover{ /* esta forma de selección es para que no se aplique a inputs que no tengan el tipo 'submit' */
@@ -106,6 +105,21 @@ margin: 0 auto; /* Centra horizontalmente */
   text-align: center; /*centra el texto dentro del elemento, necesitamos esta opción para que funcione, si queremos que los textos se alineen a la izquierda podemos reescribirlo más adelante */
 }
 
+.button_form_2{
+    font-family: Arial, sans-serif; 
+    font-size: 1rem;
+    letter-spacing: 8;
+    background: none;
+    color: #333;
+    border-radius: 8px;
+    margin-inline: 0.2rem;
+    margin-block: 0.5rem;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+}
 
-
+.button_form_2:hover, #randomWord:hover{ /* esta forma de selección es para que no se aplique a inputs que no tengan el tipo 'submit' */
+    background-color: #fe982c7f;
+    text-align: center;
+}
 
