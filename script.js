@@ -7,6 +7,7 @@ console.log(perricosArray);
 
 // addPerrico();
 
+//esta linea de abajo no haría falta porque ya se ha defginido en la función renderPerrico. 
 const dogList = document.querySelector('#dog-list'); //modifica por id el div con id dog-list
 //doglist es una variable que selecciona el elemento HTML con el ID dog-list. Este es el contenedor donde se insertaran las tarjetas de los perros
 
