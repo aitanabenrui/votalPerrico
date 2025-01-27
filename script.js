@@ -203,7 +203,7 @@ document.querySelector('#tied-votes').addEventListener('click', function(event){
     tiedVotes();
 });
 
-//Agrgar el evento al botón "Mostrar todos de nuevo"
+//Agregar el evento al botón "Mostrar todos de nuevo"
 document.querySelector('#reset-view').addEventListener('click', function(event){
     event.preventDefault(); // Evitar el envío del formulario
     resetView();
