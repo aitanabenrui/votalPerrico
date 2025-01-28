@@ -92,6 +92,8 @@ function renderPerricoArray(){
 //comparará los valores y si se acciona el botón de ver los votos positivos, la función hará invisibles todas las tarjetas que no cumplan con el requisito
 const positive = document.querySelector('#positives'); 
 const negative = document.querySelector('#negatives'); 
+const add1dog = document.querySelector('#add-1-perrico');
+const add5dog = document.querySelector('#add-5-perrico');
 
 const addPositiveVotes = ()=>{
     //seleccionamos todas las tarjetas de perritos
@@ -107,6 +109,8 @@ const addPositiveVotes = ()=>{
             card.style.display = 'none'; // Ocultar si no tiene más votos positivos
         }
     });
+    add1dog.disabled = true;
+    add5dog.disabled = true;
 };
 
 // Función para mostrar perritos con votos negativos
@@ -150,6 +154,8 @@ const resetView = () => {
     dogCards.forEach((card) => { //para cada una de ellas vuelve a dejar el estilo original
         card.style.display = ''; // Mostrar todas las tarjetas, Restablece el estilo de la tarjeta
     });
+    add1dog.disabled = false;
+    add5dog.disabled = false;
 };
 
 // Función para agregar un perrico aleatorio al array, llama a la función d la API para obtener una URL del perro
