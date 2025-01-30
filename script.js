@@ -17,23 +17,32 @@ function addSocialListeners(){
  // Función para los votos positivos: para cada botón de precioso, se añade un eventListener, busca al hermano anterior y le suma 1 
 //Selecciona todos los botones con la clase .like (botón precioso), por cada botón se agrega un evento que incrementa el número de votos
 document.querySelectorAll('.like').forEach((buttonNode) => { //seleccióna todos los botones con la clase like
-    buttonNode.addEventListener('click', function () { //al hacer click busca el elemento anterior (el contador de likes) e incrementa el número mostrado en el span .like-count
-        console.log('me gusta clickado');
-        const hermanico = buttonNode.previousElementSibling; //accede al hermano anterior del botón, que en el html es el elemento <p> que contien el contador de likes. Encuentra el span con la clase .like-count dentro de ese <p> y le suma 1 al número mostrado en ese <span>
-        const likeCountNode = hermanico.querySelector('.like-count'); //selecciona el elemento del html span con la class 'like-count'
-        likeCountNode.innerText = Number(likeCountNode.innerText) + 1  //y al elemento con class -like-count, le suma 1.
-    });
+    if(!buttonNode.hasAttribute('data-listened')) { // Verifica si ya tiene un listener: si el botón no tiene el atrinuto data-listened, la condición será verdadera y el bloque de código dentro del if se ejecuta
+        //.hasAttribute es un método que comprueba si un elemento html tien un atributo específico
+        //si el botón ya tiene el atributo data-listened, no añadirá un nuevo listener
+        buttonNode.addEventListener('click', function () { //al hacer click busca el elemento anterior (el contador de likes) e incrementa el número mostrado en el span .like-count
+            console.log('me gusta clickado');
+            const hermanico = buttonNode.previousElementSibling; //accede al hermano anterior del botón, que en el html es el elemento <p> que contien el contador de likes. Encuentra el span con la clase .like-count dentro de ese <p> y le suma 1 al número mostrado en ese <span>
+            const likeCountNode = hermanico.querySelector('.like-count'); //selecciona el elemento del html span con la class 'like-count'
+            likeCountNode.innerText = Number(likeCountNode.innerText) + 1  //y al elemento con class -like-count, le suma 1.
+        });
+        buttonNode.setAttribute('data-listened', 'true'); // Marca el botón como "escuchado"
+        //agrega el atributo data-listened al boton buttonNode
+    }
 });
 
 //Función para los votos negarivos: para cada botón de feísimo se añade un eventListener, busca al hermano anterior y le suma 1
 document.querySelectorAll('.dislike').forEach((buttonNode) => { //buttonNode es el botón en el que se hace clic (.like o .dislike).
-    buttonNode.addEventListener('click', function () {         //previousElementSibling accede al contenedor inmediatamente anterior (el que contiene los contadores like-count o dislike-count).
-        console.log('me gusta clickado');
-        const hermanico = buttonNode.previousElementSibling;
-        const dislikeCountNode = hermanico.querySelector('.dislike-count');
-        dislikeCountNode.innerText = Number(dislikeCountNode.innerText) + 1
+    if(!buttonNode.hasAttribute('data-listened')) { 
+        buttonNode.addEventListener('click', function () {         //previousElementSibling accede al contenedor inmediatamente anterior (el que contiene los contadores like-count o dislike-count).
+            console.log('me gusta clickado');
+            const hermanico = buttonNode.previousElementSibling;
+            const dislikeCountNode = hermanico.querySelector('.dislike-count');
+            dislikeCountNode.innerText = Number(dislikeCountNode.innerText) + 1
+            });
+            buttonNode.setAttribute('data-listened', 'true'); // Marca el botón como "escuchado"
+        }
     });
-});
 }
 
 /* Al hacer clic en el botón "Precioso":
@@ -52,7 +61,7 @@ En este caso, se usa para identificar el contenedor de los contadores relacionad
 
 //esta función se encarga de añadir las cards de perritos
 
-function renderPerrico(dogImage){ //recibe la URL de la imagen de perro
+function renderPerrico(dogImage, addToStart = false){ //recibe la URL de la imagen de perro
     //crea la tarjeta del perro con la imagen, botones y contadores de votos
     const htmlAdd =
     `<div class="dogCard" >
@@ -69,8 +78,14 @@ function renderPerrico(dogImage){ //recibe la URL de la imagen de perro
         </div>
     </div>`;
     //se inserta en el contenedor #dog-list usando innerHTML
-    document.querySelector('#dog-list').innerHTML += htmlAdd;
-
+   // document.querySelector('#dog-list').innerHTML += htmlAdd;
+   //conidcional para que el botón de añadir un perrito delante funcione
+    if (addToStart) {
+        dogList.insertAdjacentHTML('afterbegin', htmlAdd); // Añadir al principio
+    } else {
+        dogList.insertAdjacentHTML('beforeend', htmlAdd); // Añadir al final
+    }
+    addSocialListeners(); //llama a addSocialListeners para que los nuevos botones funcionen
 }
 
 
@@ -94,6 +109,7 @@ const positive = document.querySelector('#positives');
 const negative = document.querySelector('#negatives'); 
 const add1dog = document.querySelector('#add-1-perrico');
 const add5dog = document.querySelector('#add-5-perrico');
+const add1dogStart = document.querySelector('#add-1-perrico-start');
 
 const addPositiveVotes = ()=>{
     //seleccionamos todas las tarjetas de perritos
@@ -111,6 +127,7 @@ const addPositiveVotes = ()=>{
     });
     add1dog.disabled = true;
     add5dog.disabled = true;
+    add1dogStart.disabled = true;
 };
 
 // Función para mostrar perritos con votos negativos
@@ -146,6 +163,9 @@ const tiedVotes = () =>{
             card.style.display = 'none'; // Ocultar si no tiene más votos negativos
         }
     });
+    add1dog.disabled = true;
+    add5dog.disabled = true;
+    add1dogStart.disabled = true;
 }
 
 // Función para mostrar todos los perritos nuevamente: restablecer la visualización de todas las tarjetas de perritos en la página
@@ -156,14 +176,22 @@ const resetView = () => {
     });
     add1dog.disabled = false;
     add5dog.disabled = false;
+    add1dogStart.disabled = false;
 };
 
 // Función para agregar un perrico aleatorio al array, llama a la función d la API para obtener una URL del perro
-const addPerrico = async ()=>{
+
+const addPerrico = async (addToStart = false)=>{ //cambiará a true si apretamos el botón
     const perricoImg = await getRandomDogImage(); //la función getRandomDogImage se declara en el archivo api.js
     console.log(perricoImg);
-    perricosArray.push(perricoImg); //añad la url al array perricosArray y la renderiza en la página con la función renderPerrico
-    renderPerrico(perricoImg); // Re-renderizar la lista con la nueva imagen
+
+    if(addToStart){
+        perricosArray.unshift(perricoImg);
+    } else {
+        perricosArray.push(perricoImg); //añad la url al array perricosArray y la renderiza en la página con la función renderPerrico
+    }
+
+    renderPerrico(perricoImg, addToStart); // Re-renderizar la lista con la nueva imagen
     addSocialListeners(); //activa los eventos
 };
 
@@ -214,4 +242,10 @@ document.querySelector('#tied-votes').addEventListener('click', function(event){
 document.querySelector('#reset-view').addEventListener('click', function(event){
     event.preventDefault(); // Evitar el envío del formulario
     resetView();
+});
+
+//Agregar el evento al botón "Añadir 1 perrito al principio"
+
+document.querySelector('#add-1-perrico-start').addEventListener('click', function(){
+    addPerrico(true); 
 });
