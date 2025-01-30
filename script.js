@@ -276,6 +276,8 @@ const popupTimeout = setTimeout(() => {
     }
 }, 3000);
 
+//Listener para que al pulsar donde sea se quite el popup
+
 document.querySelector('#popup').addEventListener('click', () => {
         clearTimeout(popupTimeout); // Cancelar el mensaje si hay interacción
         document.querySelector('#popup').style.display = '';
