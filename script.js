@@ -268,10 +268,16 @@ setInterval(()=>{
 
 //A los 15 segundos de entrar en la web, si no he hecho click en ninguno de los botones de añadir perros, que salga un mensaje encima que diga "Pulsa algún botón para añadir perricos"
 
-setTimeout(() => {
+const popupTimeout = setTimeout(() => {
     // Verificar si no se ha añadido ningún perro (el contenedor está vacío)
     if (dogList.children.length === 0) {
         // Añadir el mensaje directamente dentro del contenedor con innerHTML
         document.querySelector('#popup').innerHTML = `<div class="popup">¡Pulsa algún botón para añadir perricos!</div>`;
     }
 }, 3000);
+
+document.querySelectorAll('button').forEach((button) => {
+    button.addEventListener('click', () => {
+        clearTimeout(popupTimeout); // Cancelar el mensaje si hay interacción
+    });
+});
