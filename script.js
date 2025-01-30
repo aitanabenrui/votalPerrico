@@ -88,7 +88,8 @@ function renderPerrico(dogImage, addToStart = false){ //recibe la URL de la imag
     addSocialListeners(); //llama a addSocialListeners para que los nuevos botones funcionen
 }
 
-
+//----------------------------------------------------------------------------------------------------------------------------------------------
+//creo que este código es redundante, no se por qué esto está definido así
 function renderPerricoArray(){
     dogList.innerHTML = ''; // Limpiar el contenido de la lista de perros
 
@@ -100,7 +101,7 @@ function renderPerricoArray(){
 
     addSocialListeners(); //llama a addSocialListeners para que los nuevos botones funcionen
 }
-
+//----------------------------------------------------------------------------------------------------------------------------------------------
 //función para añadir los perritos con votos + y -, los que están en empate y un botón para poder volver a la vista de todas las cards
 //la idea es crear funciones que definan una variable "dogCard" la cual contendrá todas las cards de perritos existentes generadas en ese momento
 //se seleccionarán todas con querySelectorAll, y para cada una de ellas mirará en el span con id like-count y dislike-count.
@@ -185,7 +186,9 @@ const addPerrico = async (addToStart = false)=>{ //cambiará a true si apretamos
     const perricoImg = await getRandomDogImage(); //la función getRandomDogImage se declara en el archivo api.js
     console.log(perricoImg);
 
-    //este bloque de código es redundante: como addPerrico llama a renderPerrico inmepdiatamente después
+    //este bloque de código es redundante: como addPerrico llama a renderPerrico inmepdiatamente después, además perricosArray no se usa más adelante en ningúan función relevante
+    //renderPerrico ya maneja el posicionamiento, no hay dependencia entre el array y el DOM
+    //el bloque no sería redundante si se necesitara el array de perritos para un porpósito específico del DOM
    /*  if(addToStart){
         perricosArray.unshift(perricoImg);
     } else {
