@@ -123,3 +123,17 @@ margin: 0 auto; /* Centra horizontalmente */
     text-align: center;
 }
 
+.popup{
+    font-family: Arial, sans-serif; 
+    font-size: 1.5rem;
+    letter-spacing: 1x;
+    background: none;
+    color: #333;
+    border-radius: 3px;
+    margin-inline: 0.2rem;
+    margin-block: 1rem;
+    background-color: rgb(255, 250, 117);
+    padding: 20vh;
+    margin-inline:10vw;
+    align-items: center;
+}
