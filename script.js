@@ -272,12 +272,11 @@ const popupTimeout = setTimeout(() => {
     // Verificar si no se ha añadido ningún perro (el contenedor está vacío)
     if (dogList.children.length === 0) {
         // Añadir el mensaje directamente dentro del contenedor con innerHTML
-        document.querySelector('#popup').innerHTML = `<div class="popup">¡Pulsa algún botón para añadir perricos!</div>`;
+        document.querySelector('#popup').style.display = 'block';
     }
 }, 3000);
 
-document.querySelectorAll('button').forEach((button) => {
-    button.addEventListener('click', () => {
+document.querySelector('#popup').addEventListener('click', () => {
         clearTimeout(popupTimeout); // Cancelar el mensaje si hay interacción
+        document.querySelector('#popup').style.display = '';
     });
-});
