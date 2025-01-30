@@ -257,6 +257,8 @@ document.querySelector('#add-1-perrico-start').addEventListener('click', functio
     addPerrico(true); 
 });
 
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 /* //aplicación de setTimeout & intervals para añadir targetas de perros cada 10s
 
 setInterval(()=>{
@@ -266,6 +268,10 @@ setInterval(()=>{
 
 //A los 15 segundos de entrar en la web, si no he hecho click en ninguno de los botones de añadir perros, que salga un mensaje encima que diga "Pulsa algún botón para añadir perricos"
 
-setTimeout(()=>{
-    dogList.innerHTML = `<div class='popup'>¡Pulsa algún botón para añadir perricos!</div>`;
-}, 1500);
+setTimeout(() => {
+    // Verificar si no se ha añadido ningún perro (el contenedor está vacío)
+    if (dogList.children.length === 0) {
+        // Añadir el mensaje directamente dentro del contenedor con innerHTML
+        dogList.innerHTML = `<div class="popup">¡Pulsa algún botón para añadir perricos!</div>`;
+    }
+}, 2000);
