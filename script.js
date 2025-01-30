@@ -90,6 +90,8 @@ function renderPerrico(dogImage, addToStart = false){ //recibe la URL de la imag
 
 //----------------------------------------------------------------------------------------------------------------------------------------------
 //creo que este código es redundante, no se por qué esto está definido así
+//Las tarjetas se generan directamente en el DOM al agregar perritos con renderPerrico
+//No hay funcionalidades que destruyan o modifiquen significativamente el DOM, por lo que no es necesario recurrir al array para re-renderizarlo.
 function renderPerricoArray(){
     dogList.innerHTML = ''; // Limpiar el contenido de la lista de perros
 
