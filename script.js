@@ -272,6 +272,6 @@ setTimeout(() => {
     // Verificar si no se ha añadido ningún perro (el contenedor está vacío)
     if (dogList.children.length === 0) {
         // Añadir el mensaje directamente dentro del contenedor con innerHTML
-        dogList.innerHTML = `<div class="popup">¡Pulsa algún botón para añadir perricos!</div>`;
+        document.querySelector('#popup').innerHTML = `<div class="popup">¡Pulsa algún botón para añadir perricos!</div>`;
     }
-}, 2000);
+}, 3000);
