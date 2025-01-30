@@ -116,7 +116,7 @@ const addPositiveVotes = ()=>{
     const dogCards = document.querySelectorAll('.dogCard'); //metemos en una variable todas las dogCard existentes
     
     dogCards.forEach((card)=>{ //para cada card de perrito definimos la cantidad de likes y dislikes que tiene
-        const likeCount = Number(card.querySelector('.like-count').innerText || 0); // Votos positivos
+        const likeCount = Number(card.querySelector('.like-count').innerText || 0); // Votos positivos, si no tiene votos se le asigna 0 a likeCount.
         const dislikeCount = Number(card.querySelector('.dislike-count').innerText || 0); // Votos negativos
 
         if (likeCount > dislikeCount) { //si tiene mas likes que dislikes, entonces dejará el estilo original de la card
@@ -185,11 +185,12 @@ const addPerrico = async (addToStart = false)=>{ //cambiará a true si apretamos
     const perricoImg = await getRandomDogImage(); //la función getRandomDogImage se declara en el archivo api.js
     console.log(perricoImg);
 
-    if(addToStart){
+    //este bloque de código es redundante: como addPerrico llama a renderPerrico inmepdiatamente después
+   /*  if(addToStart){
         perricosArray.unshift(perricoImg);
     } else {
         perricosArray.push(perricoImg); //añad la url al array perricosArray y la renderiza en la página con la función renderPerrico
-    }
+    } */
 
     renderPerrico(perricoImg, addToStart); // Re-renderizar la lista con la nueva imagen
     addSocialListeners(); //activa los eventos
