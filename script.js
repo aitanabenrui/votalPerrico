@@ -92,6 +92,7 @@ function renderPerrico(dogImage, addToStart = false){ //recibe la URL de la imag
 //creo que este código es redundante, no se por qué esto está definido así
 //Las tarjetas se generan directamente en el DOM al agregar perritos con renderPerrico
 //No hay funcionalidades que destruyan o modifiquen significativamente el DOM, por lo que no es necesario recurrir al array para re-renderizarlo.
+// implementando un botón "Reiniciar" o guardando el estado de la aplicación), el bloque de código que actualiza perricosArray al agregar un perrito dejaría de ser redundante.
 function renderPerricoArray(){
     dogList.innerHTML = ''; // Limpiar el contenido de la lista de perros
 
@@ -187,16 +188,16 @@ const resetView = () => {
 const addPerrico = async (addToStart = false)=>{ //cambiará a true si apretamos el botón
     const perricoImg = await getRandomDogImage(); //la función getRandomDogImage se declara en el archivo api.js
     console.log(perricoImg);
-
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //este bloque de código es redundante: como addPerrico llama a renderPerrico inmepdiatamente después, además perricosArray no se usa más adelante en ningúan función relevante
     //renderPerrico ya maneja el posicionamiento, no hay dependencia entre el array y el DOM
     //el bloque no sería redundante si se necesitara el array de perritos para un porpósito específico del DOM
-   /*  if(addToStart){
+    if(addToStart){
         perricosArray.unshift(perricoImg);
     } else {
         perricosArray.push(perricoImg); //añad la url al array perricosArray y la renderiza en la página con la función renderPerrico
-    } */
-
+    }
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     renderPerrico(perricoImg, addToStart); // Re-renderizar la lista con la nueva imagen
     addSocialListeners(); //activa los eventos
 };
